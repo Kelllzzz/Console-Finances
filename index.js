@@ -86,3 +86,7 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+var totalnumberofmonths = finances.length
+var netprofitloss = 0
+console.log ("Total Months :", totalnumberofmonths)
