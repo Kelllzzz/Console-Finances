@@ -90,3 +90,16 @@ var finances = [
 var totalnumberofmonths = finances.length
 var netprofitloss = 0
 console.log ("Total Months :", totalnumberofmonths)
+// Go through the array and add up all the values
+// Loop through the array
+//console.log (finances[0][1])
+for (let index = 0; index < finances.length; index++) {
+  const profitloss = finances[index] [1];
+  //console.log(finances[index][1]);
+  netprofitloss = netprofitloss+profitloss
+  if (index > 0) {
+    finances[index][1]
+    var change
+  }
+}
+console.log ("Total : $" + netprofitloss)
