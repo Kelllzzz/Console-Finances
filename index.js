@@ -111,7 +111,7 @@ for (let index = 0; index < finances.length - 1; index++) {
 }
 
 let totalDifference = differences.reduce((a, b) => a + b, 0);
-let averageChange = totalDifference / differences.length;
+let averageChange = (totalDifference / differences.length).toFixed(2)
 
 console.log("Average Change: ", averageChange);
 
