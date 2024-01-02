@@ -112,3 +112,14 @@ let totalDifference = differences.reduce((a, b) => a + b, 0);
 let averageChange = totalDifference / differences.length;
 
 console.log("Average Change: ", averageChange);
+
+// To find period with greatest increase in profits
+let Increase = [];
+for (let index = 0; index < finances.length - 1; index++) {
+ Increase.push({date: finances[index+1][0], Increase: finances[index+1][1] - finances[index][1]});
+}
+
+let maxDifference = Math.max(...Increase.map(item => item.Increase));
+let maxDate = Increase.find(item => item.Increase === maxDifference).date;
+
+console.log("Greatest Increase in Profits: = $" + (maxDate, maxDifference));
