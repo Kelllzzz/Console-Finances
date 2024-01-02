@@ -104,8 +104,10 @@ for (let index = 0; index < finances.length; index++) {
 console.log ("Total : $" + netprofitloss)
 // Average changes in total profits/Losses for the period
 let differences = [];
+
 for (let index = 0; index < finances.length - 1; index++) {
   differences.push(finances[index+1][1] - finances[index][1]);
+ 
 }
 
 let totalDifference = differences.reduce((a, b) => a + b, 0);
@@ -115,11 +117,37 @@ console.log("Average Change: ", averageChange);
 
 // To find period with greatest increase in profits
 let Increase = [];
+let maxMonth = 0;
+let maxMonthDate;
 for (let index = 0; index < finances.length - 1; index++) {
- Increase.push({date: finances[index+1][0], Increase: finances[index+1][1] - finances[index][1]});
+ Increase.push({month: finances[index+1][0], difference: finances[index+1][1] - finances[index][1]});
 }
 
-let maxDifference = Math.max(...Increase.map(item => item.Increase));
-let maxDate = Increase.find(item => item.Increase === maxDifference).date;
+let maxDifference = Math.max(...Increase.map(item => item.difference));
 
-console.log("Greatest Increase in Profits: = $" + (maxDate, maxDifference));
+for (let index = 0; index < Increase.length; index++) {
+  if (finances[index+1][1] - finances[index][1] > maxMonth) {
+    maxMonth = finances[index+1][1] - finances[index][1]
+    maxMonthDate = finances[index+1][0]
+  } 
+}
+console.log(`Greatest Increase in Profits/Losses: ${maxMonthDate} ($${maxDifference})`);
+
+// For period with greatest decrease in profits
+let Decrease = [];
+let minMonth = 0;
+let minMonthDate;
+for (let index = 0; index < finances.length - 1; index++) {
+ Decrease.push({date: finances[index+1][0], Decrease: finances[index+1][1] - finances[index][1]});
+}
+
+let minDifference = Math.min(...Decrease.map(item => item.Decrease));
+let minDate = Decrease.find(item => item.Decrease === minDifference).date;
+
+for (let index = 0; index < Decrease.length; index++) {
+  if (finances[index+1][1] - finances[index][1] < minMonth) {
+    minMonth = finances[index+1][1] - finances[index][1]
+    minMonthDate = finances[index+1][0]
+  } 
+}
+console.log(`Greatest Decrease in Profits/Losses: ${minMonthDate} ($${minDifference})`);
