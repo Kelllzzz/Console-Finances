@@ -87,15 +87,14 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-var totalnumberofmonths = finances.length
+var totalnumberofmonths = finances
 var netprofitloss = 0
-console.log ("Total Months :", totalnumberofmonths)
+console.log ("Total Months :", totalnumberofmonths.length)
 // Go through the array and add up all the values
 // Loop through the array
 //console.log (finances[0][1])
 for (let index = 0; index < finances.length; index++) {
   const profitloss = finances[index] [1];
-  //console.log(finances[index][1]);
   netprofitloss = netprofitloss+profitloss
   if (index > 0) {
     finances[index][1]
@@ -103,3 +102,13 @@ for (let index = 0; index < finances.length; index++) {
   }
 }
 console.log ("Total : $" + netprofitloss)
+// Average changes in total profits/Losses for the period
+let differences = [];
+for (let index = 0; index < finances.length - 1; index++) {
+  differences.push(finances[index+1][1] - finances[index][1]);
+}
+
+let totalDifference = differences.reduce((a, b) => a + b, 0);
+let averageChange = totalDifference / differences.length;
+
+console.log("Average Change: ", averageChange);
